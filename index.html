@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Metadatos clave -->
+  <title>Impacto Laboral | Plataforma de Diagnóstico y Simuladores de Costos en Uruguay</title>
+  <meta name="description" content="Mida el impacto económico de la rotación de personal, vacantes y costos operativos en su sector. Herramientas interactivas para Agro, Inmobiliarias, Gastronomía y Logística.">
+  <meta name="keywords" content="rotacion de personal uruguay, costos laborales, calculadora agro uruguay, seleccion de personal, avanzada rh">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Favicon & Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1E3A8A;
+      --primary-dark: #0F172A;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --success: #10B981;
+      --bg-light: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #FFFFFF;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      color: #E0E7FF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #93C5FD;
+      max-width: 650px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .intro-box {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-box h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-box p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1);
+      border-color: var(--accent);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-1: 1;
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--bg-light);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .card:hover .card-btn {
+      background-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .cta-banner {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--success);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    @media (min-width: 768px) {
+      .cta-banner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .cta-text h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .cta-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-official {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-official:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-wsp {
+      background-color: var(--success);
+      color: #FFFFFF;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-wsp:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      background-color: var(--primary-dark);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer a {
+      color: #93C5FD;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Diagnóstico Laboral & Operativo</div>
+    <h1>Plataforma de Impacto Laboral</h1>
+    <p>Simuladores interactivos diseñados para cuantificar la fuga silenciosa de dinero por rotación, vacantes e ineficiencias en empresas uruguayas.</p>
+  </header>
+
+  <main>
+    <section class="intro-box">
+      <h2>Seleccione su Sector de Actividad</h2>
+      <p>Acceda a la herramienta técnica adaptada a las métricas específicas de su industria:</p>
+    </section>
+
+    <div class="grid">
+      
+      <!-- Sector Agro -->
+      <a href="/agro" class="card">
+        <div>
+          <div class="card-icon">🌾</div>
+          <h3>Sector Agropecuario</h3>
+          <p>Mida el costo real de la rotación de peones, capataces y la pérdida de productividad en zafra bajo el Grupo 23.</p>
+        </div>
+        <div class="card-btn">
+          <span>Abrir Simulador</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Sector Inmobiliarias -->
+      <a href="/inmobiliarias" class="card">
+        <div>
+          <div class="card-icon">🏢</div>
+          <h3>Sector Inmobiliario</h3>
+          <p>Cuantifique el impacto en comisiones no cobradas por vacantes en equipos comerciales y alta rotación de agentes.</p>
+        </div>
+        <div class="card-btn">
+          <span>Abrir Simulador</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Sector Gastronomía -->
+      <a href="/gastronomia" class="card">
+        <div>
+          <div class="card-icon">🍽️</div>
+          <h3>Sector Gastronómico</h3>
+          <p>Diagnostique el costo de entrenamiento, desperdicio y falta de personal clave en sala y cocina.</p>
+        </div>
+        <div class="card-btn">
+          <span>Abrir Simulador</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Sector Transporte y Logística -->
+      <a href="/transporte" class="card">
+        <div>
+          <div class="card-icon">🚛</div>
+          <h3>Transporte & Logística</h3>
+          <p>Mida el costo de unidades detenidas por falta de choferes calificados y la rotación en distribución.</p>
+        </div>
+        <div class="card-btn">
+          <span>Abrir Simulador</span>
+          <span>→</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Banner de Cierre / Conversión hacia Avanzar RH -->
+    <section class="cta-banner">
+      <div class="cta-text">
+        <h3>¿Necesita solucionar los costos detectados?</h3>
+        <p>Avanzar RH diseña e implementa programas de selección, retención y gestión de talento para empresas en Uruguay.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="https://avanzargestionhumana.com" target="_blank" class="btn-official">Sitio Oficial Avanzar RH</a>
+        <a href="https://wa.me/59899000000?text=Hola,%20estuve%20utilizando%20la%20plataforma%20Impacto%20Laboral%20y%20me%20gustaría%20consultar%20por%20servicios" target="_blank" class="btn-wsp">Consultar por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Impacto Laboral — Plataforma técnica independiente desarrollada para el diagnóstico corporativo.</p>
+    <p>En convenio y respaldo metodológico con <a href="https://avanzargestionhumana.com" target="_blank">Avanzar RH Consultora</a>.</p>
+  </footer>
+
+</body>
+</html>
